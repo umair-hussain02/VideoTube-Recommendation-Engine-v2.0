@@ -1,34 +1,37 @@
-# LLM Answer Reliability Checker
+# VideoTube Recommendation Engine (v2.0)
 
 > Status: In development (started November 2026)
 
 ## Overview
-Large language models can produce answers that sound confident but are not supported by their source material. This project explores a simple way to detect that problem.
+This project extends VideoTube, my final year project (a full-stack video-sharing platform built with the MERN stack), with a recommendation feature.
 
-The tool answers questions from a set of documents using retrieval-augmented generation (RAG), then checks each answer against the retrieved source text and flags answers that are not supported.
+The goal is to suggest relevant videos to each user based on their activity on the platform.
+
+Main project: https://github.com/umair-hussain02/Video-Tube-fullstack
 
 ## Planned features
-- Upload a small set of documents (PDF or text)
-- Split documents into chunks and store embeddings for retrieval
-- Answer user questions using the most relevant chunks
-- Verify each answer against its sources and label it as Supported, Partially supported or Unsupported
-- Show the source passages used for each answer
-- Track simple reliability statistics across a set of test questions
+- Personalised "For You" recommendations based on:
+  - Watch history
+  - Liked videos
+  - Subscribed channels
+- "Similar videos" suggestions on the video watch page
+- Trending videos based on recent views and likes
+- A REST API endpoint that the VideoTube backend can call
+
+## Planned approach
+- Content-based filtering using video titles, descriptions and categories
+- Collaborative filtering using patterns in user interactions
+- A simple combination of both methods for the final ranking
 
 ## Planned tech stack
-- TypeScript, Node.js, Express.js
-- OpenAI / Claude APIs (generation and verification)
-- PostgreSQL with pgvector (via Supabase) for embeddings
-- React for a simple interface
-
-## Goals
-- Understand how retrieval quality affects answer reliability
-- Compare different verification approaches for LLM outputs
-- Build a small evaluation set to measure how often answers are unsupported
+- Python, pandas, scikit-learn
+- FastAPI for the recommendation API
+- MongoDB (shared with VideoTube)
 
 ## Roadmap
-- [ ] Document ingestion and chunking
-- [ ] Embedding storage and retrieval
-- [ ] Question answering with sources
-- [ ] Answer verification step
-- [ ] Reliability statistics and evaluation
+- [ ] Export and prepare interaction data from VideoTube
+- [ ] Content-based recommendations
+- [ ] Collaborative filtering
+- [ ] Trending videos logic
+- [ ] API integration with the VideoTube backend
+- [ ] Evaluate recommendation quality
